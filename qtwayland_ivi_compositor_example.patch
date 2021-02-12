@@ -1,0 +1,35 @@
+diff --git a/examples/wayland/ivi-compositor/main.qml b/examples/wayland/ivi-compositor/main.qml
+index 1ea965e1..6e96e2f5 100644
+--- a/examples/wayland/ivi-compositor/main.qml
++++ b/examples/wayland/ivi-compositor/main.qml
+@@ -48,9 +48,10 @@
+ **
+ ****************************************************************************/
+ 
+-import QtQuick 2.0
++import QtQuick 2.5
+ import QtWayland.Compositor 1.0
+ import QtQuick.Window 2.2
++import QtQuick.VirtualKeyboard 2.1
+ 
+ WaylandCompositor {
+     WaylandOutput {
+@@ -81,6 +82,12 @@ WaylandCompositor {
+                     text: "Other surfaces"
+                 }
+             }
++            InputPanel {
++                visible: active
++                y: active ? parent.height - height : parent.height
++                anchors.left: parent.left
++                anchors.right: parent.right
++            }
+         }
+     }
+     Component {
+@@ -102,4 +109,5 @@ WaylandCompositor {
+             item.handleResized();
+         }
+     }
++    TextInputManager {}
+ }
